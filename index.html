@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Day 4 | My Happiness 🧡</title>
+
+    <style>
+        /* ---------- Global Styles ---------- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+
+            background: radial-gradient(
+                circle at top,
+                #ff9b35,
+                #a63720 58%,
+                #410e27
+            );
+
+            color: #fff6e9;
+            font-family: Georgia, serif;
+            text-align: center;
+        }
+
+        /* ---------- Main Card ---------- */
+        .card {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+            padding: 32px 22px;
+
+            border: 1px solid #ffd18a;
+            border-radius: 28px;
+
+            background: #712a20c9;
+            box-shadow: 0 0 40px #ffb34750;
+        }
+
+        /* ---------- Artwork & Typography ---------- */
+        .art {
+            font-size: 75px;
+            animation: float 3s infinite;
+        }
+
+        h1 {
+            font-size: clamp(38px, 9vw, 56px);
+            color: #ffdfa0;
+        }
+
+        p {
+            line-height: 1.9;
+        }
+
+        /* ---------- Surprise Button ---------- */
+        button {
+            padding: 14px 24px;
+            border: 0;
+            border-radius: 30px;
+
+            background: linear-gradient(
+                120deg,
+                #fff0b0,
+                #ffb13b
+            );
+
+            color: #792514;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            filter: brightness(1.08);
+        }
+
+        /* ---------- Hidden Message ---------- */
+        #msg {
+            display: none;
+            margin-top: 20px;
+            color: #ffe3b0;
+        }
+
+        /* ---------- Falling Decorations ---------- */
+        .fall {
+            position: fixed;
+            top: -35px;
+            z-index: 3;
+            pointer-events: none;
+
+            animation: drop linear forwards;
+        }
+
+        /* ---------- Animations ---------- */
+        @keyframes drop {
+            to {
+                transform: translateY(110vh) rotate(500deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-9px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <main class="card">
+
+        <div>🧡 🌺 🧡</div>
+
+        <p>DAY 4 • MAA KUSHMANDA</p>
+
+        <div class="art">🌻</div>
+
+        <h1>You Are My Joy</h1>
+
+        <h2>My Personal Devi Ji ❤️🙇</h2>
+
+        <p>
+            May Maa Kushmanda bless you with health, happiness,
+            positive energy, and success in everything you do.
+        </p>
+
+        <p>
+            Your laughter is my favourite melody, and your
+            happiness is one of the most beautiful things
+            in my world. 🧡
+        </p>
+
+        <!-- Surprise Button -->
+        <button onclick="surprise()">
+            Unlock My Heart 💌
+        </button>
+
+        <!-- Surprise Message -->
+        <div id="msg">
+
+            <h2>For My Happiness 🌻</h2>
+
+            <p>
+                If I could gift you one thing, I would give you
+                the ability to see yourself through my eyes.
+                Then you would understand just how precious,
+                wonderful, and lovable you are. I will always
+                wish for your happiness. 🙇❤️
+
+                <br><br>
+
+                Happy Day 4, meri jaan!
+            </p>
+
+        </div>
+
+        <p>🪔 Jai Mata Di 🪔</p>
+
+    </main>
+
+    <script>
+        // ---------- Falling Symbols ----------
+        const symbols = [
+            "🧡",
+            "🌻",
+            "🌺",
+            "❤️",
+            "✨",
+            "💕",
+            "🙇"
+        ];
+
+        // Create a falling decoration
+        function drop() {
+            const element = document.createElement("span");
+
+            element.className = "fall";
+
+            element.textContent =
+                symbols[Math.random() * symbols.length | 0];
+
+            element.style.left =
+                Math.random() * 100 + "vw";
+
+            element.style.fontSize =
+                16 + Math.random() * 18 + "px";
+
+            const duration = 5 + Math.random() * 5;
+
+            element.style.animationDuration =
+                duration + "s";
+
+            document.body.appendChild(element);
+
+            // Remove the decoration after its animation
+            setTimeout(() => {
+                element.remove();
+            }, duration * 1000);
+        }
+
+        // Continuously create falling decorations
+        setInterval(drop, 330);
+
+        // ---------- Surprise Button ----------
+        function surprise() {
+            document.getElementById("msg").style.display = "block";
+
+            // Create a burst of 35 falling decorations
+            for (let i = 0; i < 35; i++) {
+                setTimeout(drop, i * 55);
+            }
+        }
+    </script>
+
+</body>
+</html>
